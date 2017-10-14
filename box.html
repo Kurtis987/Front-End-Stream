@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Box Model</title>
+	<style type="text/css">
+		.box{
+			width: 300px;
+			height: 300px;
+			background-color: #81BBC9;
+			margin: 50px;
+			border: 10px solid #000;
+			border-radius: 30px;
+		}
+		#box1{
+			background-color: yellow;
+			border-color: yellow;
+			border-top-right-radius: 50%;
+			border-top-left-radius: 10%;
+			border-bottom-left-radius: 50%;
+			border-bottom-right-radius: 10%;
+		}
+		#box2{
+			border-radius: 200px;
+		}
+		#box3{
+			border-style: solid;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box1"></div>
+	<div class="box" id="box2"></div>
+	<div class="box" id="box3"></div>
+</body>
+</html>

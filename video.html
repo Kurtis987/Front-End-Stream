@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML5 Video</title>
+	<style type="text/css">
+		body {
+			background-color: black;
+		}
+		.grayscale {
+			-webkit-filter: grayscale(1);
+			filter: grayscale(1);
+		}
+		video {
+			display: block;
+			margin: 50px auto;
+		}
+		h1, h2 {
+			color: white;
+			width: 600px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>HTML5 Video</h1>
+	<video class="grayscale" width="600" controls="controls" preload="metadata" autoplay poster="images/jazzcat.png">
+		<source src="video/WebM_Bunny.webm#t=45,55" type="video/webm" />
+		<source src="video/OGV_Bunny.ogv#t=45,55" type="video/ogg" />
+		<source src="video/MP4_Bunny.mp4#t=45,55" type="video/mp4" />
+		<track src="video/sub.vtt" label="English subtitles" kind="subtitles" srclang="en" default>
+	</video>
+	<!-- edge doesn't support fragments -->
+
+	<h2>Same Video No Fragments</h2>
+	<video width ="600" controls="controls" preload="auto" loop poster="images/jazzcat.png">
+        <!-- If the browser can't play WEBM try OGV then MP4 -->
+        <source src="video/WebM_Bunny.webm" type="video/webm"/>
+        <source src="video/OGV_Bunny.ogv" type="video/ogg" />
+        <source src="video/MP4_Bunny.mp4" type="video/mp4"/>
+        <track src="video/sub.vtt" label="English subtitles" kind="subtitles" srclang="en" default>
+    </video>
+    <!-- Chrome doesn't support subtitles -->
+</body>
+</html>

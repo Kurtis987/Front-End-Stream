@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Filtered images</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			/*centers the inline-blocks */
+			text-align: center; 
+		}
+		div {
+			padding: 10px;
+			margin-top: 5px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: inline-block; 
+			vertical-align: top;
+			width: 45%; 
+			text-align: left; 
+			background-color: lightblue;
+			border-radius: 10px;
+		} 
+		.elephant {
+			float: right;
+			margin: 0 0 10px 10px;
+		} 
+		#grayscale {
+			-webkit-filter: grayscale(.8);
+			filter: grayscale(.8);
+		}
+		#sepia {
+			-webkit-filter: sepia(1);
+			filter: sepia(1);
+		}
+		#hue-rotate {
+			-webkit-filter: hue-rotate(270deg);
+			filter: hue-rotate(270deg);
+		}
+	</style>
+</head>
+<body> 
+	<div>
+		<h2>Original</h2>
+		<img class="elephant" src="images/elephant.jpg" align="elephant" width="250px" height="250px" />
+	</div>
+	<div>
+		<h2>Grayscale</h2>
+		<img class="elephant" id="grayscale" src="images/elephant.jpg" align="elephant" width="250px" height="250px" />
+	</div>
+	<div>
+		<h2>Sepia</h2>
+		<img class="elephant" id="sepia" src="images/elephant.jpg" align="elephant" width="250px" height="250px" />
+	</div>
+	<div>
+		<h2>Hue-rotate</h2>
+		<img class="elephant" id="hue-rotate" src="images/elephant.jpg" align="elephant" width="250px" height="250px" />
+	</div>
+</body>
+</html>

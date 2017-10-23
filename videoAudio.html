@@ -10,9 +10,9 @@
 			-webkit-filter: grayscale(1);
 			filter: grayscale(1);
 		}
-		video {
+		video, audio {
 			display: block;
-			margin: 50px auto;
+			margin: 50px auto 150px auto;
 		}
 		h1, h2 {
 			color: white;
@@ -40,5 +40,10 @@
         <track src="video/sub.vtt" label="English subtitles" kind="subtitles" srclang="en" default>
     </video>
     <!-- Chrome doesn't support subtitles -->
+    <h2>HTML5 Audio</h2>
+    <audio preload="auto" loop controls="controls">
+    	<source src="audio/tail.mp3" type="audio/mpeg; codecs=mp3" />
+    	<source src="audio/beats.ogg" type="audio/ogg; codecs=vorbis" />
+    </audio>
 </body>
 </html>

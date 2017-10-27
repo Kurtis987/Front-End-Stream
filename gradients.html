@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gradients</title>
+	<style type="text/css">
+		div {
+			width: 600px;
+			height: 250px;
+			margin: 50px auto;
+		}
+		#div1 {
+			background: linear-gradient(to right, #F0C27B, #4B1248);
+		}
+		#div2 {
+			background: linear-gradient(to right, #5F2C82, #3498DB);
+		}
+		#div3 {
+			background: linear-gradient(to left, #5F2C82, #3498DB);
+		}
+		#div4 {
+			background: linear-gradient(to left, #FF4E50, #F9D423);
+		}
+		#div5 {
+			background: linear-gradient(to bottom, #FF4E50, #F9D423);
+		}
+		#div6 {
+			background: linear-gradient(to right, #FFED21 1%, #FF2A06 50%, #9412FF 100%);
+		}
+		#div7 {
+			background: linear-gradient(to right, #FFED21 1%, #FF2A06 10%, #9412FF 100%);
+		}
+		#div8 {
+			background: linear-gradient(45deg, black, white);
+		}
+		#div9 {
+			background: linear-gradient(-45deg, black, white);
+		}
+		#div10 {
+			background: linear-gradient(-45deg, rgba(0,0,0,0), red);
+		}
+		#div11 {
+			background: linear-gradient(-45deg, #FFED21, #FF2A06);
+		}
+		#div12 {
+			background: radial-gradient(#5f2c82, #3498DB);
+		}
+		#div13 {
+			background: radial-gradient(#5f2c82 40%, #3498DB 60%);
+		}
+		#div14 {
+			height:120px;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 41.5px 0;
+			background: linear-gradient(to right, red 10%, yellow 50%, green 70%, blue 100%);
+		}
+		#div15 {
+			height:120px;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 41.5px 0;
+			background: radial-gradient(rgba(0,0,0,.3) 5%, rgba(175,105,14,1) 60%);
+			box-shadow: 15px 15px 10px #6C727a;
+			border: 3px solid black;
+			opacity: .8;
+		}
+		h1 {
+			text-align: center;
+			margin: 0px;
+		}
+		#shadowHeader {
+			text-shadow: 7px 8px 4px gray;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<div id="div4"></div>
+	<div id="div5"></div>
+	<div id="div6"></div>
+	<div id="div7"></div>
+	<div id="div8"></div>
+	<div id="div9"></div>
+	<div id="div10"></div>
+	<div id="div11"></div>
+	<div id="div12"></div>
+	<div id="div13"></div>
+	<div id="div14"><h1>A box with Gradient</h1></div>
+	<div id="div15"><h1 id="shadowHeader">A box with Gradient</h1></div>
+</body>
+</html>

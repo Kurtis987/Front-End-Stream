@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta charset="UTF-8">
       <title>Form</title>
       <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -12,20 +13,27 @@
 
       body{
          font-family: 'Roboto', sans-serif;
+	 padding-top: 20px;
       }
          #container{
             width: 550px;
             margin: auto; 
          }
 
-         legend{
+         legend{ 
+	    	float: left;	/*floated for compatibility with IE
+	    	while border is drawn and border-radius is present*/
             font-size: 30px;
             background-color: #fff;
             border-radius: 5px;
             border: 1px solid #999;
             padding: 4px 15px;
+	    	margin-top: -43.5px; /*move legend back to natural position */
+	    	margin-bottom: 20px;
          }
-            
+         #clear { /* items following legend should start on new line */
+	    	clear: both;
+	 	}
          label.field{
             display: block;
             text-align: right;
@@ -33,6 +41,7 @@
             float: left;
 
          }
+
          input{
             width: 200px;
             border-radius: 5px;
@@ -50,7 +59,9 @@
 
          fieldset{
             width: 450px;
-            border: 1px solid #999;
+            border: 1px solid #999; 
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
             border-radius: 20px;
             clear: both;
             padding: 20px;
@@ -69,14 +80,27 @@
       <div id="container">
 	<form>
 		<fieldset>
-			<label class="field" for="firstName">First Name: </label>
-			<input name="firstName" id="firstName" type="text"><br>
+			<legend>Registration</legend>
+			<div id="clear"> <!-- group 1st two items so we can force them to a new line -->
+				<label class="field" for="firstName">*First Name: </label>
+				<input name="firstName" id="firstName" type="text" required placeholder="Enter your first name"><br>
+			</div>
+			<label class="field" for"age">Age: </label>
+			<input type="number" name="age" id="age" placeholder="Enter age here:" min="18" max="100"><br>
 			<label class="field" for="password">Password: </label>
-			<input name="password" id="password" type="password"><br>
-			<label class="field" for="email">Email: </label>
-			<input name="email" id="email" type="email"><br>
+			<input name="password" id="password" type="password" placeholder="8 Characters minimum" pattern=".{8,}"><br>
+			<label class="field" for="email">*Email: </label>
+			<input name="email" id="email" type="email" required autofocus placeholder="Enter your email here"><br>
+			<label class="field" for="passport">Passport: </label>
+			<input type="text" name="passport" id="passport" placeholder="Enter your passport number here" pattern="[0-9A-Za-z]{6,9}" title="6-9 Alphanumeric characters">
+			<label class="field">Telephone: </label>
+			<input type="text" name="telephone" id="telephone" placeholder="Enter you phone number here" pattern="[0-9]{10}" title="10 digits"><br>
+			<label class="field" for="zipcode">Zip Code: </label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="Enter your zip code here" pattern="[0-9]{5}" title="5 digits"><br>
+			<label class="field" for="creditCard">Credit card</label>
+			<input type="text" name="creditCard" id="creditCard" placeholder="Enter Credit card number here" pattern="[0-9]{12,19}" title="12-19 digits">
 			<label class="field" for="website">Website: </label>
-			<input name="url" id="url" type="url"><br>
+			<input name="url" id="url" type="url" placeholder="Enter your website here"><br>
 		</fieldset>
 		<input id="submit" type="submit" value="Submit">
 	</form> 

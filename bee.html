@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	body {
+	   background-color: lawngreen;
+	   padding: 0;
+	   margin: 0;
+	   width: 100%;
+	}
+	#sky {
+	   position: relative; 
+	   margin: 0;
+	   padding: 0;
+	   height: 440px; 
+	   background-color: DeepSkyBlue;
+	   width: 100%;
+	   z-index: -15;
+	}
+	#container {
+	   position: relative; 
+	   margin: 0;
+	   min-width: 1000px; 
+	}
+	
+	.head {
+	   width: 30px;
+	   height: 30px;
+	   border-radius: 50px;
+	   background-color: yellow;
+	   position: absolute;
+	   bottom: 0px;
+	   left: 100px;
+	   z-index: 2;
+	}
+	.eye {
+	   width: 4px;
+	   height: 4px;
+	   border-radius: 50px;
+	   background-color: black;
+	   position: absolute;
+	   top: 8px;
+	   right: 7px;
+	}
+	.smile {
+	   border: 2px solid black;
+	   width: 8px;
+	   height: 4px;
+	   border-radius: 0 0 50px 0px;
+	   border-top: 0px;
+	   border-left: 0px;
+	   -ms-transform: rotate(25deg); /* IE 9 */
+           -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
+           transform: rotate(25deg);
+	   position: absolute;
+	   top: 15px;
+	   right: 0px;
+	   	
+	}
+	.bodymid {
+	   width: 20px;
+	   height: 25px;
+	   border-radius: 50px;
+	   background-color: black;
+	   position: absolute;
+	   bottom: 2px;
+	   left: 85px;
+	   z-index:-1;
+	}
+	.bodyContainer
+	{
+	   position: absolute;
+	   width: 38px;
+	   height: 27px;
+	   bottom: 2px;
+	   left: 54px;
+       border-radius: 50px;
+  	   overflow: hidden;
+	}
+	.bodyback {
+	   width: 38px;
+	   height: 27px;
+	   border-radius: 50px;
+	   position: absolute;
+	   z-index:-2;
+	}
+	.stripe1 {
+	   background-color: yellow;
+
+	}
+	.stripe2 {
+	   background-color: black; 
+	   left: 4px;
+	}
+	.stripe3 {
+	   background-color: yellow; 
+	   left: 10px;
+	}
+	.stripe4 {
+	   background-color: black; 
+	   left: 14px;
+	}
+	.stripe5 {
+	   background-color: yellow; 
+	   left: 20px;
+	}
+	.stinger {
+		background-color: black;
+		width:14px;
+		height:14px;
+		position: absolute;
+		bottom: 8.5px;
+		left: 50px;
+		-ms-transform: rotate(-45deg); /* IE 9 */
+    	-webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+		transform: rotate(-45deg);
+		z-index: -3;
+	}
+	.antenna {
+	   border: 2px solid black;
+	   width: 8px;
+	   height: 4px;
+	   border-radius: 50px 0px 0px 0px;
+	   border-bottom: 0;
+	   border-right: 0;
+	   -ms-transform: rotate(25deg); /* IE 9 */
+       -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
+       transform: rotate(25deg);
+	   position: absolute;
+	   top: -3px;
+	   right: 0px;
+	   z-index: -1;
+	}
+	.ant2 {
+	   width: 10px;
+	   right: 2px;
+	   top: -6px;
+	   -ms-transform: rotate(-10deg); /* IE 9 */
+       -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
+	   transform: rotate(-10deg);
+	}
+
+	.leg {
+	   border: 2px solid black;
+	   width: 8px;
+	   height: 4px;
+	   border-radius: 50px 0px 0px 0px;
+	   border-bottom: 0px;
+	   border-right: 0px;
+	   -ms-transform: rotate(75deg); /* IE 9 */
+   	   -webkit-transform: rotate(75deg); /* Chrome, Safari, Opera */
+   	   transform: rotate(75deg);
+	   position: absolute;
+	   bottom:-3px;
+	   z-index: -3;
+	}
+	.backleg { 
+	   border-radius: 0px 50px 0px 0px;
+	   border-left: 0px;
+	   -ms-transform: rotate(-75deg); /* IE 9 */
+   	   -webkit-transform: rotate(-75deg); /* Chrome, Safari, Opera */
+   	   transform: rotate(-75deg);
+	} 
+
+	.leg1 {
+	   left: 83px; 
+	}
+	.leg2 {
+	   left: 80px;
+	}
+	.leg3 {
+	   left: 70px;
+	}
+	.leg4 {
+	   left:70px;
+	}
+	.leg5 {
+	   left: 55px; 	 
+	}
+	.leg6 {
+	   left: 60px;
+	}
+	.wing {
+	   background-color: RGBA(240,248,255,.9);
+	   width: 30px;
+	   height: 30px;
+	   border-radius: 50px 50px 0px 50px;
+	   position: absolute;
+	   z-index:-2;
+	   Top: 148px;
+	   left: 50px;
+	}
+	.wing1 {
+	   border-right: 1px solid lightblue;
+	}
+	.wing2 {
+	   Top: 148px;
+	   left: 54px;
+	   z-index:-3;
+	}
+
+	.beePath {  /* leaves the jet stream */
+	   width: 200px;
+	   height: 200px;
+	   border-radius: 200px;
+	   border: 1px dashed rgba(0, 0, 0, 0);
+	   position: absolute;
+	   top: 200px;
+	   left: 150px;
+	   z-index: -4;
+       -webkit-animation-name: path; /* Safari 4.0 - 8.0 */
+       -webkit-animation-duration: 19s; /* Safari 4.0 - 8.0 */
+  	   -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+   	   animation-name: path;
+   	   animation-duration: 19s;
+   	   animation-fill-mode: forwards;
+	}
+	.beeContainer { /* holds the bee and bee movement */
+	   width: 199px;
+	   height: 199px;
+	   border-radius: 200px; 
+	   position: absolute;
+	   top: 0;
+	   left: 0;
+	   z-index: -4; 
+	   -webkit-animation-name: flightCircle; /* Safari 4.0 - 8.0 */
+   	   -webkit-animation-duration: 6.5s; /* Safari 4.0 - 8.0 */
+	   -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+   	   animation-name: flightCircle;
+   	   animation-duration: 6.5s;
+   	   animation-fill-mode: forwards;
+	}
+
+	.beeStraight { /* leaves straight part of jet stream */
+	   width: 63.75px;
+	   height: 200px;
+	   position: absolute;
+	   top: 185px;  
+	   left: 195px;  
+	   z-index: -4;
+	   border: 1px dashed rgba(0, 0, 0, 0);	
+	   -webkit-animation-name: straightPath; /* Safari 4.0 - 8.0 */
+	   -webkit-animation-duration: 15s; /* Safari 4.0 - 8.0 */
+	   -webkit-animation-delay: 6s; /* Safari 4.0 - 8.0 */
+	   -webkit-animation-fill-mode: forwards;
+	   animation-name: straightPath;
+	   animation-duration: 15s;
+	   animation-delay: 6s; 
+	   animation-fill-mode: forwards;
+	}
+	
+	#link2 { /*still part of straight jet stream */
+		left:258.75px;
+		-webkit-animation-delay: 8.5s; /* Safari 4.0 - 8.0 */
+		animation-delay: 8.5s;
+
+	}
+	#link3 {
+		left:322.5px;
+		-webkit-animation-delay: 10.5s; /* Safari 4.0 - 8.0 */
+		animation-delay: 10.5s;
+	}
+	#link4 {
+		left:322.5px;
+		-webkit-animation-delay: 12.5s; /* Safari 4.0 - 8.0 */
+		animation-delay: 12.5s;
+	}
+	#link5 {
+		left:386.25px;
+		-webkit-animation-delay: 13.5s; /* Safari 4.0 - 8.0 */
+		animation-delay: 13.5s;
+	}
+	#final { /*straight jet stream after second circle */
+		left: 450px;
+		-webkit-animation-delay: 22.5s; /* Safari 4.0 - 8.0 */
+	   	animation-delay: 22.5s;
+	}
+	#link6 { /* still part of straight jet stream after 2nd circle */
+		left: 513.75px;
+		-webkit-animation-delay: 24.5s; /* Safari 4.0 - 8.0 */
+	   	animation-delay: 24.5s;
+	}
+	#link7 {
+		left: 577.5px;
+		-webkit-animation-delay: 26.5s; /* Safari 4.0 - 8.0 */
+	   	animation-delay: 26.5s;
+	}
+	#link8 {
+		left: 641.25px;
+		-webkit-animation-delay: 28.5s; /* Safari 4.0 - 8.0 */
+	   	animation-delay: 28.5s;
+	}
+	#link9 {
+		left: 705px;
+		-webkit-animation-delay: 30.5s; /* Safari 4.0 - 8.0 */
+	   	animation-delay: 30.5s;
+	}
+	.beeRectangle { /*holds the bee and moves the bee foward */
+	   width: 259px;
+	   height: 199px;
+	   position: absolute;
+	   top: 201px;  
+	   left: 151px;    
+	   z-index: -4; 
+	   visibility: hidden;
+	   -webkit-animation-name: straight;/* Safari 4.0 - 8.0 */
+   	   -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+  	   -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+	   -webkit-animation-delay: 6.5s; /* Safari 4.0 - 8.0 */
+   	   animation-name: straight;
+   	   animation-duration: 10s;
+   	   animation-fill-mode: forwards;
+   	   animation-delay: 6.5s; 
+	}
+	#beePathSecondCircle {
+	   left: 400px;
+       	   -webkit-animation-delay: 16.5s; /* Safari 4.0 - 8.0 */
+   	   animation-delay: 16.5s; 
+	}
+	#beeContainerSecondCircle {
+	   visibility: hidden;
+   	   -webkit-animation-delay: 16.5s; /* Safari 4.0 - 8.0 */ 
+	   animation-delay: 16.5s;  
+	}
+	#finalBee { /* the bee's last movement, stays visible */
+	   left: 400px;
+	   -webkit-animation-name: finalPath;/* Safari 4.0 - 8.0 */
+	   -webkit-animation-delay: 23s; /* Safari 4.0 - 8.0 */
+	   -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+	   animation-name:  finalPath;
+	   animation-delay: 23s;
+	   animation-fill-mode: forwards;
+	}
+
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes path {
+    		0%   {border: 1px dashed rgba(0, 0, 0, 0);}
+    		25%  {border-bottom: 1px dashed #F0F8FF;}
+    		50%  {border-right: 1px dashed #F0F8FF;}
+		75%  {border-top: 1px dashed #F0F8FF;}
+    		100% {border: 1px dashed #F0F8FF;}
+	}
+
+	/* Standard syntax */
+	@keyframes path {
+	  	0%   {border: 1px dashed rgba(0, 0, 0, 0);}
+    		25%  {border-bottom: 1px dashed #F0F8FF;}
+    		50%  {border-right: 1px dashed #F0F8FF;}
+		75%  {border-top: 1px dashed #F0F8FF;}
+    		100% {border: 1px dashed #F0F8FF;}
+	}
+
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes flightCircle {
+    		0%   {
+			-ms-transform: rotate(0deg); /* IE 9 */
+	    	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+			transform: rotate(0deg);
+		}
+    		25%  {
+			-ms-transform: rotate(-90deg); /* IE 9 */
+	        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */	
+			transform: rotate(-90deg);
+			visibility: visible;
+		}
+    		50%  {
+			-ms-transform: rotate(-180deg); /* IE 9 */
+	        -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */	
+			transform: rotate(-180deg);
+		}
+		75%  {
+			-ms-transform: rotate(-270deg); /* IE 9 */
+	        -webkit-transform: rotate(-270deg); /* Chrome, Safari, Opera */
+			transform: rotate(-270deg);}
+    		100% {
+			-ms-transform: rotate(-360deg); /* IE 9 */
+	    	-webkit-transform: rotate(-360deg); /* Chrome, Safari, Opera */
+			transform: rotate(-360deg);
+			visibility: hidden;
+		}
+	}
+
+	/* Standard syntax */
+	@keyframes flightCircle {
+	  	0%   {
+			-ms-transform: rotate(0deg); /* IE 9 */
+	    	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+			transform: rotate(0deg);
+		}	
+		25%  {
+			-ms-transform: rotate(-90deg); /* IE 9 */
+	    	-webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+			transform: rotate(-90deg);
+			visibility: visible;
+		}
+		50%  {
+			-ms-transform: rotate(-180deg); /* IE 9 */
+	    	-webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
+			transform: rotate(-180deg);
+		}
+		75%  {
+			-ms-transform: rotate(-270deg); /* IE 9 */
+	    	-webkit-transform: rotate(-270deg); /* Chrome, Safari, Opera */
+			transform: rotate(-270deg);
+		}
+		100% {
+			-ms-transform: rotate(-360deg); /* IE 9 */
+	    	-webkit-transform: rotate(-360deg); /* Chrome, Safari, Opera */
+			transform: rotate(-360deg);
+			visibility: hidden;
+		}
+	}
+
+
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes straight {
+		0%   {
+			-ms-transform: translateX(0px); /* IE 9 */
+    		-webkit-transform: translateX(0px); /* Chrome, Safari, Opera */	
+			transform: translateX(0px);
+			visibility: visible;
+		}
+		25%  {
+			-ms-transform: translateX(62.5px); /* IE 9 */
+    		-webkit-transform: translateX(62.5px); /* Chrome, Safari, Opera */
+			transform: translateX(62.5px);
+		}
+		50%  {
+			-ms-transform: translateX(125px); /* IE 9 */
+    		-webkit-transform: translateX(125px); /* Chrome, Safari, Opera */
+			transform: translateX(125px);
+		}
+		75%  {
+			-ms-transform: translateX(187.5px); /* IE 9 */
+    		-webkit-transform: translateX(187.5px); /* Chrome, Safari, Opera */
+			transform: translateX(187.5px);
+		}
+		100% {
+			-ms-transform: translateX(250px); /* IE 9 */
+    		-webkit-transform: translateX(250px); /* Chrome, Safari, Opera */
+			transform: translateX(250px);
+			visibility: hidden;
+		}
+	}
+
+	/* Standard syntax */
+	@keyframes straight {
+		0%   {
+			-ms-transform: translateX(0px); /* IE 9 */
+    		-webkit-transform: translateX(0px); /* Chrome, Safari, Opera */	
+			transform: translateX(0px);
+			visibility: visible;
+		}
+		25%  {
+			-ms-transform: translateX(62.5px); /* IE 9 */
+    		-webkit-transform: translateX(62.5px); /* Chrome, Safari, Opera */
+			transform: translateX(62.5px);
+		}
+		50%  {
+			-ms-transform: translateX(125px); /* IE 9 */
+    		-webkit-transform: translateX(125px); /* Chrome, Safari, Opera */
+			transform: translateX(125px);
+		}
+		75%  {
+			-ms-transform: translateX(187.5px); /* IE 9 */
+    		-webkit-transform: translateX(187.5px); /* Chrome, Safari, Opera */
+			transform: translateX(187.5px);
+		}
+		100% {
+			-ms-transform: translateX(250px); /* IE 9 */
+    		-webkit-transform: translateX(250px); /* Chrome, Safari, Opera */
+			transform: translateX(250px);
+			visibility: hidden;
+		}
+	}
+
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes straightPath { 
+		25%  {border-bottom: 1px dashed #F0F8FF;}
+		50%  {border-bottom: 1px dashed #F0F8FF;}
+		75%  {border-bottom: 1px dashed #F0F8FF;}
+		100% {border-bottom: 1px dashed #F0F8FF;}
+	}
+
+	/* Standard syntax */
+	@keyframes straightPath {
+		25%  {border-bottom: 1px dashed #F0F8FF;}
+		50%  {border-bottom: 1px dashed #F0F8FF;}
+		75%  {border-bottom: 1px dashed #F0F8FF;}
+		100% {border-bottom: 1px dashed #F0F8FF;}
+	}
+
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes finalPath {
+		0%   {
+			-ms-transform: translateX(0px); /* IE 9 */
+    		-webkit-transform: translateX(0px); /* Chrome, Safari, Opera */
+			transform: translateX(0px);
+			visibility: visible;
+		}
+		25%  {
+			-ms-transform: translateX(62.5px)); /* IE 9 */
+    		-webkit-transform: translateX(62.5px)); /* Chrome, Safari, Opera */
+			transform: translateX(62.5px);
+		}
+		50%  {
+			-ms-transform: translateX(125px); /* IE 9 */
+    		-webkit-transform: translateX(125px); /* Chrome, Safari, Opera */
+			transform: translateX(125px);
+		}
+		75%  {
+			-ms-transform: translateX(187.5px); /* IE 9 */
+    		-webkit-transform: translateX(187.5px); /* Chrome, Safari, Opera */
+			transform: translateX(187.5px);
+		}
+		100% {
+			-ms-transform: translateX(250px); /* IE 9 */
+    		-webkit-transform: translateX(250px); /* Chrome, Safari, Opera */
+			transform: translateX(250px);
+		  	visibility: visible;
+		}
+	}
+
+	/* Standard syntax */
+	@keyframes finalPath {
+		0%   {
+			-ms-transform: translateX(0px); /* IE 9 */
+    		-webkit-transform: translateX(0px); /* Chrome, Safari, Opera */
+			transform: translateX(0px);
+			visibility: visible;
+		}
+		25%  {
+			-ms-transform: translateX(62.5px)); /* IE 9 */
+    		-webkit-transform: translateX(62.5px)); /* Chrome, Safari, Opera */
+			transform: translateX(62.5px);
+		}
+		50%  {
+			-ms-transform: translateX(125px); /* IE 9 */
+    		-webkit-transform: translateX(125px); /* Chrome, Safari, Opera */
+			transform: translateX(125px);
+		}
+		75%  {
+			-ms-transform: translateX(187.5px); /* IE 9 */
+    		-webkit-transform: translateX(187.5px); /* Chrome, Safari, Opera */
+			transform: translateX(187.5px);
+		}
+		100% {
+			-ms-transform: translateX(250px); /* IE 9 */
+    		-webkit-transform: translateX(250px); /* Chrome, Safari, Opera */
+			transform: translateX(250px);
+		  	visibility: visible;
+		}
+	}
+	#roseContainer {
+		position: absolute;
+		top:315px; 
+		left: 850px;
+		
+	}
+
+	#stem {
+		position: absolute;
+		right: 18px;
+		top:0px; 
+		width: 170px;
+		height: 200px;
+		border-radius: 150px;
+		border: 3px solid green;
+		border-left: 0px;
+		border-top: 0px;
+		border-bottom: 0px;
+		-ms-transform: rotate(10deg); /* IE 9 */
+		-webkit-transform: rotate(10deg);/* Chrome, Safari, Opera */
+		transform: rotate(10deg);
+		z-index: -6;
+	}
+	.rose {
+		background-color: #A40000;
+		height: 100px;
+		width: 100px;
+		border-radius: 100px;
+		position: absolute;
+		top: -10px;
+		right: -15px;
+		z-index: -5;
+	}
+	.rosePedal { 
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		position: absolute;
+		top: 22px;
+		right: -12px;
+		z-index: -5;
+		-ms-box-shadow: 12px 12px 0 0 #E30022;
+		-o-box-shadow: 12px 12px 0 0 #E30022;
+		-webkit-box-shadow: 12px 12px 0 0 #E30022;
+		box-shadow: 12px 12px 0 0 #E30022;
+		-ms-transform: scaleX(1.1) rotate(-5deg); /* IE 9 */
+		-webkit-transform: scaleX(1.1) rotate(-5deg);/* Chrome, Safari, Opera */
+		transform: scaleX(1.1) rotate(-5deg);
+	}
+	.roseInner {
+		height: 32px;
+		width: 32px;
+		-ms-box-shadow: 17px 17px 0 0 #E30022;
+		-o-box-shadow: 17px 17px 0 0 #E30022;
+		-webkit-box-shadow: 17px 17px 0 0 #E30022;
+		box-shadow: 10px 10px 0 0 #E30022;
+	}
+	#pedal2 {
+		right: 0px;
+		top: -2px;
+		-ms-transform: scaleY(1.2) rotate(-65deg); /* IE 9 */
+		-webkit-transform: scaleY(1.2) rotate(-65deg);/* Chrome, Safari, Opera */
+		transform: scaleY(1.2) rotate(-65deg); 
+	}
+	#pedal3 {
+		right: 24px;
+		top: 3px;
+		-ms-transform: scaleX(1.2) rotate(-145deg); /* IE 9 */
+		-webkit-transform: scaleX(1.2) rotate(-145deg);/* Chrome, Safari, Opera */
+		transform: scaleX(1.2) rotate(-145deg);
+	}
+	#pedal4 {
+		right: 28px;
+		top: 25px;
+		-ms-transform: rotate(-225deg); /* IE 9 */
+		-webkit-transform: rotate(-225deg);/* Chrome, Safari, Opera */
+		transform: rotate(-225deg);
+	}
+	#pedal5 {
+		right: 12px;
+		top: 30px;
+		-ms-transform: rotate(70deg); /* IE 9 */
+		-webkit-transform: rotate(70deg);/* Chrome, Safari, Opera */
+		transform: rotate(70deg);
+	}
+	#pedal6 {
+		right: 11px;
+		top: 23px;
+		-ms-transform: rotate(35deg); /* IE 9 */
+		-webkit-transform: rotate(35deg);/* Chrome, Safari, Opera */
+		transform: rotate(35deg);
+	}
+	#pedal7 {
+		right: 20px;
+		top: 23px;
+		-ms-transform: rotate(115deg) scaleY(1.2); /* IE 9 */
+		-webkit-transform: rotate(115deg) scaleY(1.2);/* Chrome, Safari, Opera */
+		transform: rotate(115deg) scaleY(1.2);
+	}
+	#pedal8 {
+		right: 20px;
+		top: 20px; 
+		-ms-transform: rotate(220deg); /* IE 9 */
+		-webkit-transform:rotate(220deg);/* Chrome, Safari, Opera */
+		transform: rotate(220deg);
+	}
+	#pedal9 {
+		right: 20px;
+		top: 12px;  
+		-ms-transform: rotate(-20deg); /* IE 9 */
+		-webkit-transform: rotate(-20deg);/* Chrome, Safari, Opera */
+		transform: rotate(-20deg);
+	}
+</style>
+</head>
+<body>
+
+<div id="container">
+<div id="sky"></div>
+	<div class="beePath">
+	<div class="beeContainer">
+		<div class="head">
+			<div class="antenna"></div>
+			<div class="antenna ant2"></div>
+			<div class="eye"></div>
+			<div class="smile"></div>
+		</div>
+		<div class="bodymid"></div>
+		<div class="bodyContainer">
+			<div class="bodyback stripe1"></div>
+ 			<div class="bodyback stripe2"></div>
+			<div class="bodyback stripe3"></div>
+			<div class="bodyback stripe4"></div>
+			<div class="bodyback stripe5"></div>
+		</div>
+		<div class="wing wing1"></div>
+		<div class="wing wing2"></div>
+		<div class="leg leg1"></div>
+		<div class="leg leg2"></div>
+		<div class="leg leg3"></div>
+		<div class="leg backleg leg4"></div>
+		<div class="leg backleg leg5"></div>
+		<div class="leg backleg leg6"></div>	
+		<div class="stinger"></div>
+	</div>
+	</div>
+
+	<div class="beeStraight"></div>
+	<div class="beeStraight" id="link2"></div>
+	<div class="beeStraight" id="link3"></div>
+	<div class="beeStraight" id="link4"></div>
+	<div class="beeStraight" id="link5"></div>
+	<div class="beeRectangle"> 
+		<div class="head">
+			<div class="antenna"></div>
+			<div class="antenna ant2"></div>
+			<div class="eye"></div>
+			<div class="smile"></div>
+		</div>
+		<div class="bodymid"></div>
+		<div class="bodyContainer">
+			<div class="bodyback stripe1"></div>
+ 			<div class="bodyback stripe2"></div>
+			<div class="bodyback stripe3"></div>
+			<div class="bodyback stripe4"></div>
+			<div class="bodyback stripe5"></div>
+		</div>
+		<div class="wing wing1"></div>
+		<div class="wing wing2"></div>
+		<div class="leg leg1"></div>
+		<div class="leg leg2"></div>
+		<div class="leg leg3"></div>
+		<div class="leg backleg leg4"></div>
+		<div class="leg backleg leg5"></div>
+		<div class="leg backleg leg6"></div>	
+		<div class="stinger"></div>
+	</div>
+
+	<div class="beePath" id="beePathSecondCircle">
+	<div class="beeContainer" id="beeContainerSecondCircle">
+		<div class="head">
+			<div class="antenna"></div>
+			<div class="antenna ant2"></div>
+			<div class="eye"></div>
+			<div class="smile"></div>
+		</div>
+		<div class="bodymid"></div>
+		<div class="bodyContainer">
+			<div class="bodyback stripe1"></div>
+ 			<div class="bodyback stripe2"></div>
+			<div class="bodyback stripe3"></div>
+			<div class="bodyback stripe4"></div>
+			<div class="bodyback stripe5"></div>
+
+		</div>
+		<div class="wing wing1"></div>
+		<div class="wing wing2"></div>
+		<div class="leg leg1"></div>
+		<div class="leg leg2"></div>
+		<div class="leg leg3"></div>
+		<div class="leg backleg leg4"></div>
+		<div class="leg backleg leg5"></div>
+		<div class="leg backleg leg6"></div>	
+		<div class="stinger"></div>
+	</div>
+	</div>
+
+	<div class="beeStraight" id="final"></div>
+	<div class="beeStraight" id="link6"></div>
+	<div class="beeStraight" id="link7"></div>
+	<div class="beeStraight" id="link8"></div>
+	<div class="beeStraight" id="link9"></div>
+	<div class="beeRectangle" id="finalBee"> 
+		<div class="head">
+			<div class="antenna"></div>
+			<div class="antenna ant2"></div>
+			<div class="eye"></div>
+			<div class="smile"></div>
+		</div>
+		<div class="bodymid"></div>
+		<div class="bodyContainer">
+			<div class="bodyback stripe1"></div>
+ 			<div class="bodyback stripe2"></div>
+			<div class="bodyback stripe3"></div>
+			<div class="bodyback stripe4"></div>
+			<div class="bodyback stripe5"></div>
+		</div>
+		<div class="wing wing1"></div>
+		<div class="wing wing2"></div>
+		<div class="leg leg1"></div>
+		<div class="leg leg2"></div>
+		<div class="leg leg3"></div>
+		<div class="leg backleg leg4"></div>
+		<div class="leg backleg leg5"></div>
+		<div class="leg backleg leg6"></div>	
+		<div class="stinger"></div>
+	</div>
+	<div id="roseContainer">
+		<div class="rose"></div>
+		<div class="rosePedal"></div>
+		<div class="rosePedal" id="pedal2"></div>
+		<div class="rosePedal" id="pedal3"></div>
+		<div class="rosePedal" id="pedal4"></div>
+		<div class="rosePedal" id="pedal5"></div>
+		<div class="rosePedal roseInner" id="pedal6"></div>
+		<div class="rosePedal roseInner" id="pedal7"></div>
+		<div class="rosePedal roseInner" id="pedal8"></div>
+		<div class="rosePedal roseInner" id="pedal9"></div>
+		<div id="stem"></div>
+	</div>
+</div>
+</body>
+</html>

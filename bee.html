@@ -8,7 +8,7 @@
 	   margin: 0;
 	   width: 100%;
 	}
-	#sky {
+	.sky {
 	   position: relative; 
 	   margin: 0;
 	   padding: 0;
@@ -17,12 +17,105 @@
 	   width: 100%;
 	   z-index: -15;
 	}
-	#container {
-	   position: relative; 
-	   margin: 0;
-	   min-width: 1000px; 
+
+	.cloud {
+	   position: relative;
+	   top: 25px;
+	   left: 50px;
+	   width: 150px;
+	   height: 150px;
+	   border-radius: 200px;
+	   background-color: #DCDCDC;
+	   webkit-box-shadow: 10px 10px 8px #A9A9A9;
+	   moz-box-shadow: 10px 10px 8px #A9A9A9; 
+      	   box-shadow: 10px 10px 8px #A9A9A9; 
 	}
-	
+	.cloud-mid {
+	   top:-5px;
+	   left: 40px;
+	   width: 165px;
+	   height: 165px;
+   	   border-left: 1px solid #D3D3D3;	
+	}
+	.cloud-right {
+	  z-index:-1;
+	  top: 10px;
+	  left: 65px;
+	  webkit-box-shadow: 0px 10px 8px #A9A9A9;
+	  moz-box-shadow: 0px 10px 8px #A9A9A9; 
+      	  box-shadow: 0px 10px 8px #A9A9A9; 
+	}
+	#sun {
+	   position: absolute;
+	   top: 25px;
+	   left: 770px;
+	   width: 120px;
+	   height: 120px;
+	   border-radius: 200px;
+	   background-color: #FFD700;
+	}
+	.sunray {
+	   position: absolute;
+	   width: 50px;
+	   color: #FFD700;
+	}
+	#sunrayRight {
+	   top: 60px;
+	   left: 125px;
+	}
+	#sunrayLeft {
+	   top: 60px;
+	   right: 125px;
+	}
+	#sunrayTop {
+	   bottom: 140px;
+	   left: 35px;
+	   -ms-transform: rotate(90deg); /* IE 9 */
+           -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+           transform: rotate(90deg);
+	}
+	#sunrayBottom {
+	   top: 140px;
+	   left: 35px;
+	   -ms-transform: rotate(90deg); /* IE 9 */
+           -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+           transform: rotate(90deg);
+	}
+	#sunrayTopLeft {
+	   bottom: 110px;
+	   right: 102px;
+	   -ms-transform: rotate(45deg); /* IE 9 */
+           -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+           transform: rotate(45deg);
+	}
+	#sunrayBottomRight {
+	   top: 117px;
+	   left: 97px;
+	   -ms-transform: rotate(45deg); /* IE 9 */
+           -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+           transform: rotate(45deg);
+	}
+	#sunrayTopRight {
+	   bottom: 110px;
+	   left: 102px;
+	   -ms-transform: rotate(-45deg); /* IE 9 */
+           -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+           transform: rotate(-45deg);
+	}
+	#sunrayBottomLeft {
+	   top: 117px;
+	   right: 97px;
+	   -ms-transform: rotate(-45deg); /* IE 9 */
+           -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+           transform: rotate(-45deg);
+	}
+	#container{
+	   position: relative; 
+	   top: -440px;  /* move container to top of sky */
+	   margin: 0 auto;
+	   min-width: 1000px;
+	   max-width: 1000px;
+	}
 	.head {
 	   width: 30px;
 	   height: 30px;
@@ -667,9 +760,24 @@
 </style>
 </head>
 <body>
-
+<div class="sky"></div>
 <div id="container">
-<div id="sky"></div>
+	<div class="cloud">
+		<div class="cloud cloud-mid">
+			<div class="cloud cloud-right"></div>
+		</div>
+	</div>
+	<div id="sun">
+	   <hr class="sunray" id="sunrayRight" />
+	   <hr class="sunray" id="sunrayLeft" />
+	   <hr class="sunray" id="sunrayTop" />
+	   <hr class="sunray" id="sunrayBottom" />
+	   <hr class="sunray" id="sunrayTopLeft" />
+	   <hr class="sunray" id="sunrayBottomRight" />
+	   <hr class="sunray" id="sunrayTopRight" />
+	   <hr class="sunray" id="sunrayBottomLeft" />
+	</div>
+
 	<div class="beePath">
 	<div class="beeContainer">
 		<div class="head">
